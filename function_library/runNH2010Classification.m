@@ -76,6 +76,6 @@ data = processSaccadesAndGlissades(data,ETparams);
 % and get information about them
 %-------------------------------------
 if ETparams.fixation.doClassify
-    data = classifyFixations (data,ETparams);
+    data = classifyFixations(data,ETparams);
     data = processFixations(data,ETparams);
 end

@@ -1,11 +1,11 @@
 function ETparams = defaultParameters
 
 % user settings
-ETparams.screen.resolution              = [1280 1024];
-ETparams.screen.size                    = [0.40 0.30];
-ETparams.screen.viewingDist             = 0.58;
-ETparams.screen.dataCenter              = [ 640  512];  % center of screen has these coordinates in data
-ETparams.screen.subjectStraightAhead    = [ 640  512];  % Specify the screen coordinate that is straight ahead of the subject. Just specify the middle of the screen unless its important to you to get this very accurate!
+ETparams.screen.resolution              = [1920 1080];
+ETparams.screen.size                    = [0.527 0.296];
+ETparams.screen.viewingDist             = 0.573;
+ETparams.screen.dataCenter              = [ 960 540 ];  % center of screen has these coordinates in data
+ETparams.screen.subjectStraightAhead    = [ 960 540 ];  % Specify the screen coordinate that is straight ahead of the subject. Just specify the middle of the screen unless its important to you to get this very accurate!
 
 % flip the Y coordinate of the data? All the routines assume the origin of
 % the screen (0,0) is at the top left corner. You'll have to flip if the

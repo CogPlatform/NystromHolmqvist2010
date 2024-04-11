@@ -100,7 +100,7 @@ rect = rect.(datatype);
 % prepare labels
 missing = data.deg.missing;
 if strcmp(datatype,'deg')
-    unit = '°';
+    unit = 'Â°';
     xlbl = ['Azimuth (' unit ')'];
     ylbl = ['Elevation (' unit ')'];
 else
@@ -358,8 +358,8 @@ plotWithMark(time,pdat,style,[],...                                     % data (
              blinkMarks{:}, ...                                         % blink markers (if any)
              fixMarks{:} ...                                            % fixation markers (if any)
             );
-axis([mmt(1) mmt(2) rect(1) rect(3)]);
-axis ij
+xlim([mmt(1) mmt(2)]);
+grid on;box on;axis ij;
 
 
 %%% plot Y trace with fixation markers
@@ -391,8 +391,8 @@ plotWithMark(time,pdat,style,[],...                                     % data (
              blinkMarks{:}, ...                                         % blink markers (if any)
              fixMarks{:} ...                                            % fixation markers (if any)
             );
-axis([mmt(1) mmt(2) rect(2) rect(4)]);
-axis ij
+xlim([mmt(1) mmt(2)]);
+grid on;box on;axis ij;
 
 
 %%% plot pupil size trace with blink markers
@@ -661,7 +661,7 @@ if qHaveFixations || qHaveNoSacDataP || qHaveSacOnlyDataP
         end
     end
     axis(rect([1 3 2 4]));
-    axis ij
+    grid on;box on;axis ij;
 else
     asf = [];
 end
@@ -697,8 +697,8 @@ raw2dhndls = plotWithMark(xdata,ydata,{'k-'},usrDatr,...                        
              length(xdata),      {'mo','MarkerFaceColor','m','MarkerSize',4},...    % use red  marker for last  datapoint
              extraInp{:}                                                     ...
             );
-axis(rect([1 3 2 4]));
-axis ij
+%axis(rect([1 3 2 4]));
+axis tight;grid on;box on;axis ij;
 
 % link view of the two scanpath plots for easy viewing
 linkaxes([asr asf],'xy');
@@ -799,7 +799,7 @@ end
 % add classification thresholds
 if strcmp(datatype,'deg') && ~qSaccadeTemplateRefinement && strcmp(veltype,'vel')
     % dont plot if:
-    % 1. if plotting pixels, as thresholds are in °/s
+    % 1. if plotting pixels, as thresholds are in ï¿½/s
     % 2. if refinement was done with the saccade template responses as no
     %    velocity thresholds are then used; it would be misleading to plot
     %    them here
@@ -817,7 +817,7 @@ if ~isempty(axisSize)
     axis(axisSize)
 end
 if ~strcmp(veltype,'vel')
-    axis ij
+    grid on;box on;axis ij;
 end
 end
 
@@ -846,7 +846,7 @@ if ~isempty(axisSize)
     axis(axisSize)
 end
 if ~strcmp(veltype,'vel')
-    axis ij
+    grid on;box on;axis ij;
 end
 end
 

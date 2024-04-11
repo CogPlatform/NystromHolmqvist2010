@@ -31,7 +31,7 @@ addpath(genpath(fullfile(cd,'post-process')))       % post-process folder needed
 
 % settings for this file
 plotWhat        = 'deg';                            % 'deg' or 'pix': determines in what unit to plot data
-whichVel        = 'velX';                           % 'vel', 'velX' or 'velY': determines which velocity trace to plot when interface opens (there are buttons to view the others)
+whichVel        = 'vel';                           % 'vel', 'velX' or 'velY': determines which velocity trace to plot when interface opens (there are buttons to view the others)
 doPlot          = true;
 
 % load parameters for event classifier
@@ -57,7 +57,7 @@ extraCut    = [0 50];                       % extra ms of data to cut before and
 qInterpMissingPos   = true;                 % interpolate using straight lines to replace missing position signals?
 
 % settings for the saccade cutting (see cutSaccades.m for documentation)
-cutPosTraceMode     = 2;
+cutPosTraceMode     = 1;
 cutVelTraceMode     = 1;
 cutSaccadeSkipWindow= 1;    % don't cut during first x seconds
 
