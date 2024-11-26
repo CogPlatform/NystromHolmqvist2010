@@ -358,8 +358,9 @@ plotWithMark(time,pdat,style,[],...                                     % data (
              blinkMarks{:}, ...                                         % blink markers (if any)
              fixMarks{:} ...                                            % fixation markers (if any)
             );
-xlim([mmt(1) mmt(2)]);
-grid on;box on;axis ij;
+axis([mmt(1) mmt(2) rect(1) rect(3)]);
+box on; grid on; axis tight;
+axis ij
 
 
 %%% plot Y trace with fixation markers
@@ -391,8 +392,9 @@ plotWithMark(time,pdat,style,[],...                                     % data (
              blinkMarks{:}, ...                                         % blink markers (if any)
              fixMarks{:} ...                                            % fixation markers (if any)
             );
-xlim([mmt(1) mmt(2)]);
-grid on;box on;axis ij;
+axis([mmt(1) mmt(2) rect(2) rect(4)]);
+box on; grid on; axis tight;
+axis ij
 
 
 %%% plot pupil size trace with blink markers
@@ -435,7 +437,8 @@ if isfield(data,'pupil') && ~isempty(data.pupil.size)
                 );
     if ~isempty(axisSize)
         axis(axisSize);
-    end
+	end
+
     if isfield(data,'blink') && isfield(data.blink,'peakDSizeThreshold')
         % plot pupil size change thresholds for blink classification
         hold on;
@@ -592,6 +595,7 @@ if ~isempty(acaxs) && ~isscalar(acaxs)
         set([p; allchild(p)],'visible','off');
     end
     axes(acaxs(1));   % set visible axis to current and topmost axis
+	box on; grid on; axis tight;
 end
 
 % link x-axis (time) of the three or more timeseries for easy viewing
@@ -661,7 +665,8 @@ if qHaveFixations || qHaveNoSacDataP || qHaveSacOnlyDataP
         end
     end
     axis(rect([1 3 2 4]));
-    grid on;box on;axis ij;
+	box on; grid on; axis tight;
+    axis ij
 else
     asf = [];
 end
@@ -697,8 +702,8 @@ raw2dhndls = plotWithMark(xdata,ydata,{'k-'},usrDatr,...                        
              length(xdata),      {'mo','MarkerFaceColor','m','MarkerSize',4},...    % use red  marker for last  datapoint
              extraInp{:}                                                     ...
             );
-%axis(rect([1 3 2 4]));
-axis tight;grid on;box on;axis ij;
+box on; grid on; axis tight;
+axis ij
 
 % link view of the two scanpath plots for easy viewing
 linkaxes([asr asf],'xy');
@@ -713,8 +718,6 @@ zoom on;
 actions = {allTSeries,[raw2dhndls fix2dhndls]};
 set(zoom(gcf),'ActionPostCallback',@(obj,evd) viewCallbackFcn(obj,evd,actions));
 set(pan(gcf) ,'ActionPostCallback',@(obj,evd) viewCallbackFcn(obj,evd,actions));
-
-
 
 
     function Pupil_Callback(~,~,~)
@@ -816,6 +819,7 @@ end
 if ~isempty(axisSize)
     axis(axisSize)
 end
+box on; grid on; axis tight; axis equal;
 if ~strcmp(veltype,'vel')
     grid on;box on;axis ij;
 end
